@@ -71,7 +71,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
         Producto item = items.get(position);
         viewHolder.itemView.setTag(item);  //guardar item
 
-        if (item.getTipo().equals("Celular"))
+        if (item.getTipoProducto().equals("Celular"))
         {
             // viewHolder.imagenGral.setImageResource(imagen1);
         }
@@ -97,7 +97,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
 
 
                 int posicion=0;
-                final String itemCmb=items.get(pos).getTipo();
+                final String itemCmb=items.get(pos).getTipoProducto();
                 if (itemCmb.equals("Celular"))
                 {
                     posicion=1;
