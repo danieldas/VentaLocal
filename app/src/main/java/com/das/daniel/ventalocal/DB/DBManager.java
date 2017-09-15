@@ -16,7 +16,9 @@ public abstract class DBManager {
         db = dbHelper.getWritableDatabase();
     }
 
-
+    public void cerrar(){
+        db.close();
+    }
     public DBHelper getDbHelper() {
         return dbHelper;
     }
