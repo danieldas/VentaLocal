@@ -17,7 +17,6 @@ public abstract class DBManager {
     }
 
 
-
     public DBHelper getDbHelper() {
         return dbHelper;
     }
