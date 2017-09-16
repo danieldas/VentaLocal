@@ -1,5 +1,6 @@
 package com.das.daniel.ventalocal.DB;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -32,14 +33,33 @@ public class DBManagerProducto extends DBManager {
         super(context);
     }
 
+    public ContentValues generarValores(String id, String descripcion, String cantidad, String precio, String estado, String tipo)
+    {
+        ContentValues valores= new ContentValues();
+        valores.put(COL_ID, id);
+        valores.put(COL_DESCRIPCION, descripcion);
+        valores.put(COL_CANTIDAD, cantidad);
+        valores.put(COL_PRECIO, precio);
+        valores.put(COL_TIPO, tipo);
+        valores.put(COL_ESTADO, estado);
+        return valores;
+    }
     @Override
     public void insertarProducto(String id, String descripcion, String cantidad, String precio, String estado, String tipo) {
-
+        super.getDb().insert(NOMBRE_TABLA,null,
+                generarValores(id, descripcion,cantidad, precio, estado, tipo));
     }
 
     @Override
     public void actualizarProducto(String id, String descripcion, String cantidad, String precio, String tipo) {
-
+        ContentValues valores= new ContentValues();
+        valores.put(COL_ID, id);
+        valores.put(COL_DESCRIPCION, descripcion);
+        valores.put(COL_CANTIDAD, cantidad);
+        valores.put(COL_PRECIO, precio);
+        valores.put(COL_TIPO, tipo);
+        String [] args= new String[]{id};
+        super.getDb().update(NOMBRE_TABLA,valores, "_id=?", args);
     }
 
     @Override
