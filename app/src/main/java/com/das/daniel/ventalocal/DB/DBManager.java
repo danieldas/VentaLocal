@@ -19,6 +19,7 @@ public abstract class DBManager {
     public void cerrar(){
         db.close();
     }
+
     public DBHelper getDbHelper() {
         return dbHelper;
     }

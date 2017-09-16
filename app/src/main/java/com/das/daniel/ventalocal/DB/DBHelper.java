@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "venta.db";
+    private static final String DATABASE_NAME = "ventaDB.sqlite";
     private static final int DATABASE_VERSION = 1;
 
 
@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST " + "Producto");
+        db.execSQL("DROP TABLE IF EXISTS " + "Producto");
         //SENTENCIAS SQL
         db.execSQL("Producto");
     }
