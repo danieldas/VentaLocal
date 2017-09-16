@@ -20,6 +20,14 @@ public class DBManagerProducto extends DBManager {
     private static final String COL_TIPO="tipo";
     private static final String COL_ESTADO="estado";
 
+    public static final String CREATE_TABLE="create table " + NOMBRE_TABLA +" ("+
+                        COL_ID+" integer PRIMARY KEY AUTOINCREMENT, "+
+                        COL_DESCRIPCION+" text NOT NULL, "+
+                        COL_PRECIO+" DECIMAL(10,5) NOT NULL, "+
+                        COL_CANTIDAD+" text NOT NULL, "+
+                        COL_TIPO+" text NOT NULL, "+
+                        COL_ESTADO+" text NOT NULL); ";
+
     public DBManagerProducto(Context context) {
         super(context);
     }
