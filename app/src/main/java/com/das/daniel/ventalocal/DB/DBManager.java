@@ -35,4 +35,14 @@ public abstract class DBManager {
     public void setDb(SQLiteDatabase db) {
         this.db = db;
     }
+
+    abstract public void insertarProducto(String id, String descripcion, String cantidad, String precio,
+                                            String estado, String tipo );
+    abstract public void actualizarProducto(String id, String descripcion, String cantidad, String precio,
+                                           String tipo );
+    abstract public void darBajaProducto(String id, String estado );
+
+
+
+
 }
