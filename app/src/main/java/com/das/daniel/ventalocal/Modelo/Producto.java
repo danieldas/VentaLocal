@@ -13,6 +13,7 @@ public class Producto {
     private String tipoProducto;
     private String estado;
 
+    public Producto(){}
     public Producto(String _ID,  String precio, String descripcion, String cantidad, String tipoProducto, String estado) {
         this._ID = _ID;
 

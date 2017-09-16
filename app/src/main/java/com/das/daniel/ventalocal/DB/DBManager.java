@@ -16,6 +16,7 @@ public abstract class DBManager {
     private SQLiteDatabase db;
 
 
+
     public DBManager(Context context) {
         dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
@@ -52,7 +53,7 @@ public abstract class DBManager {
     abstract public Cursor cargarCursorBuscar(String descripcion);
 
     abstract public List<Producto> getProductosList();
-    abstract public List<Producto> Buscar();
+    abstract public List<Producto> Buscar(String descripcion);
 
 
 
