@@ -64,22 +64,32 @@ public class DBManagerProducto extends DBManager {
 
     @Override
     public void darBajaProducto(String id, String estado) {
+        ContentValues valores= new ContentValues();
+        valores.put(COL_ID, id);
+        valores.put(COL_ESTADO, estado);
+        String [] args= new String[]{id};
+        super.getDb().update(NOMBRE_TABLA,valores, "_id=?", args);
 
     }
 
     @Override
     public void actualizarCantidad(String id, String cantidad) {
-
+        ContentValues valores= new ContentValues();
+        valores.put(COL_ID, id);
+        valores.put(COL_CANTIDAD, cantidad);
+        String [] args= new String[]{id};
+        super.getDb().update(NOMBRE_TABLA,valores, "_id=?", args);
     }
 
     @Override
     public Cursor cargarCursor() {
-        return null;
+        return super.getDb().rawQuery("select * from producto where estado='Alta'", null);
     }
 
     @Override
     public Cursor cargarCursorBuscar(String descripcion) {
-        return null;
+        String [] args= new String[]{"%"+descripcion+"%"};
+        return super.getDb().rawQuery("select * from producto where estado='Alta' and descripcion LIKE ?", args);
     }
 
     @Override
