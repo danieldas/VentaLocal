@@ -12,19 +12,25 @@
             android:id="@+id/etDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese descripcion" />
+            android:hint="Ingrese descripcion"
+            android:inputType="text"
+            android:maxLength="50" />
 
         <EditText
             android:id="@+id/etPrecio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese precio" />
+            android:hint="Ingrese precio"
+            android:inputType="numberDecimal"
+            android:maxLength="5" />
 
         <EditText
             android:id="@+id/etCantidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese cantidad" />
+            android:hint="Ingrese cantidad"
+            android:inputType="number"
+            android:maxLength="2" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -41,14 +47,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Guardar"
-                android:id="@+id/btnInsertarProducto"
+                android:text="Actualizar"
+                android:id="@+id/btnActualizarProducto"
                 />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancelar"
-                android:id="@+id/btnCancelarProducto"
+                android:text="Dar de baja"
+                android:id="@+id/btnBajaProducto"
                 />
 
         </LinearLayout>

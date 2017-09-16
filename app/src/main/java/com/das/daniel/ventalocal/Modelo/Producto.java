@@ -7,16 +7,15 @@ public class Producto {
 
     //atributos
     private String _ID;
-    private String nombre;
     private String precio;
     private String descripcion;
     private String cantidad;
     private String tipoProducto;
     private String estado;
 
-    public Producto(String _ID, String nombre, String precio, String descripcion, String cantidad, String tipoProducto, String estado) {
+    public Producto(String _ID,  String precio, String descripcion, String cantidad, String tipoProducto, String estado) {
         this._ID = _ID;
-        this.nombre = nombre;
+
         this.precio = precio;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
@@ -32,13 +31,9 @@ public class Producto {
         this._ID = _ID;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+
+
 
     public String getPrecio() {
         return precio;
