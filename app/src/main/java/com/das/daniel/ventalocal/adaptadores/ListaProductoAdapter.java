@@ -8,6 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.das.daniel.ventalocal.DB.DBManagerProducto;
 import com.das.daniel.ventalocal.ItemClickListener;
@@ -24,7 +29,9 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
     private Context mainContext;
 
     // declarar componentes: private EditText, Spinner, Button
-
+    Button _btnActualizar, _btnDarDeBaja;
+    EditText _etDEscripcion, _etPrecio, _etCantidad;
+    Spinner _spTipo;
 
     int imagen1= R.drawable.ic_celular;
     int imagen2=R.drawable.ic_ropa;
@@ -38,15 +45,22 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
     }
 
     static class ListaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        // protected TextView idProd, imageview
+
+        protected TextView tvIdProd, tvDescripcion, tvPrecio, tvCantidad;
+
+        ImageView imageview;
 
         ItemClickListener itemClickListener;
 
         public ListaViewHolder(View v) {
             super(v);
-            //buscando de items_producto
-            // this.idProd = (TextView) v.findViewById(R.id.tv_prod_id);
-            //this.imagenGral= (ImageView) v.findViewById(R.id.img_prod_foto);
+            //tvNumerode items_producto
+            this.tvIdProd = (TextView) v.findViewById(R.id.tvNumero);
+            this.imageview= (ImageView) v.findViewById(R.id.imgGeneral);
+            this.tvDescripcion = (TextView) v.findViewById(R.id.tvDescripcion);
+            this.tvPrecio = (TextView) v.findViewById(R.id.tvPrecio);
+            this.tvCantidad = (TextView) v.findViewById(R.id.tvCantidad);
+
             v.setOnClickListener(this);
         }
 
@@ -92,9 +106,16 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                 //OPEN DETAIL ACTIVITY
                 //PASS DATA
 
-                final Dialog d=new Dialog(mainContext);
+                //Instancia de Dialog
+                final Dialog d = new Dialog(mainContext);
                 d.setContentView(R.layout.detalle_producto);
-                // textoIdProd= (EditText) d.findViewById(R.id.tvDProdId);
+
+                _etDEscripcion = (EditText) d.findViewById(R.id.etDescripcionD);
+                _etPrecio = (EditText) d.findViewById(R.id.etPrecioD);
+                _etCantidad = (EditText) d.findViewById(R.id.etCantidadD);
+                _spTipo = (Spinner) d.findViewById(R.id.spTipoD);
+                _btnActualizar = (Button) d.findViewById(R.id.btnActualizarProducto);
+                _btnDarDeBaja = (Button) d.findViewById(R.id.btnBajaProducto);
 
 
                 int posicion=0;
@@ -107,6 +128,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                 //textoIdProd.setText(items.get(pos).getIdProd());
 
                 managerProducto= new DBManagerProducto(mainContext);
+
 
                 botonActualizar.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -139,6 +161,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                                 .show();
                     }
                 });
+
                 d.show();
 
             }
