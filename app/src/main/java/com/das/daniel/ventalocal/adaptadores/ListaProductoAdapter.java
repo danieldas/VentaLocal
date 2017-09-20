@@ -83,22 +83,23 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
 
     @Override
     public void onBindViewHolder(ListaViewHolder viewHolder, int position) {
+
         Producto item = items.get(position);
         viewHolder.itemView.setTag(item);  //guardar item
 
         if (item.getTipoProducto().equals("Celular"))
         {
-            // viewHolder.imagenGral.setImageResource(imagen1);
+            viewHolder.imageview.setImageResource(imagen1);
         }
         else
         {
-            // viewHolder.imagenGral.setImageResource(imagen2);
+            viewHolder.imageview.setImageResource(imagen2);
         }
 
-
-        // viewHolder.idProd.setText("Nº: "+item.getIdProd());    cargar de modelo
-
-
+        viewHolder.tvIdProd.setText("Nº: " + item.get_ID());
+        viewHolder.tvDescripcion.setText("DEscripcion: " + item.getDescripcion());
+        viewHolder.tvCantidad.setText("Cantidad: " + item.getCantidad());
+        viewHolder.tvPrecio.setText("Precio: " + item.getPrecio());
 
         viewHolder.setItemClickListener(new ItemClickListener() {
             @Override
