@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.das.daniel.ventalocal.DB.DBManagerProducto;
 import com.das.daniel.ventalocal.ItemClickListener;
 import com.das.daniel.ventalocal.MainActivity;
 import com.das.daniel.ventalocal.Modelo.Producto;
@@ -150,4 +151,3 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
     }
 
 }
-
