@@ -102,11 +102,14 @@ public class DBManagerProducto extends DBManager {
             Producto producto= new Producto();
             producto.set_ID(cursor.getString(0));
             producto.setDescripcion(cursor.getString(1));
-            producto.setCantidad(cursor.getString(2));
-            producto.setPrecio(cursor.getString(3));
-            producto.setEstado(cursor.getString(4));
-            producto.setTipoProducto(cursor.getString(5));
+            producto.setPrecio(cursor.getString(2));
+            producto.setCantidad(cursor.getString(3));
+            producto.setTipoProducto(cursor.getString(4));
+            producto.setEstado(cursor.getString(5));
+
             list.add(producto);
+
+
         }
         return list;
     }
@@ -120,10 +123,10 @@ public class DBManagerProducto extends DBManager {
             Producto producto= new Producto();
             producto.set_ID(cursor.getString(0));
             producto.setDescripcion(cursor.getString(1));
-            producto.setCantidad(cursor.getString(2));
-            producto.setPrecio(cursor.getString(3));
-            producto.setEstado(cursor.getString(4));
-            producto.setTipoProducto(cursor.getString(5));
+            producto.setPrecio(cursor.getString(2));
+            producto.setCantidad(cursor.getString(3));
+            producto.setTipoProducto(cursor.getString(4));
+            producto.setEstado(cursor.getString(5));
             list.add(producto);
         }
         return list;

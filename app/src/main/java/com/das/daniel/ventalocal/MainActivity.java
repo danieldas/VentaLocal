@@ -122,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //INSERTAR
+                managerProducto.insertarProducto(null, _etDescripcion.getText()+"", _etCantidad.getText()+"",
+                        _etPrecio.getText()+"", "Alta", _spTipo.getSelectedItem()+""
+
+                    );
                 recargarRecicler();
             }
         });
@@ -129,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         _btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                d.hide();
 
             }
         });

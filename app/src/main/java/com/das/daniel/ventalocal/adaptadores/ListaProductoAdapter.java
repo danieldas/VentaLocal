@@ -140,6 +140,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                 _btnActualizar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         managerProducto.actualizarProducto(items.get(pos).get_ID(),
                                 _etDEscripcion.getText().toString(),
                                 _etCantidad.getText().toString(),
