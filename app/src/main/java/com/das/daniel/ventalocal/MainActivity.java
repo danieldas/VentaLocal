@@ -10,8 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
+import com.das.daniel.ventalocal.DB.DBManagerProducto;
 import com.das.daniel.ventalocal.Modelo.Producto;
 import com.das.daniel.ventalocal.adaptadores.ListaProductoAdapter;
 
@@ -25,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager lManager;
     private List<Producto> listaItemsProductos;
 
-    private EditText textoDescripcion;
+    private EditText _etDescripcion, _etCantidad, _etPrecio, _etBuscar;
+    private Spinner _spTipo;
+    private Button _btnInsertar, _btnCancelar;
 
 
 
@@ -35,19 +40,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         managerProducto= new DBManagerProducto(this);
-        textoBuscar= (EditText) findViewById(R.id.txtBuscar);
+        _etBuscar= (EditText) findViewById(R.id.etBuscar);
 
         inicializarRecicler();
 
 
-        FloatingActionButton btnDialogoInsertar = (FloatingActionButton) findViewById(R.id.btnInsertar);
+        FloatingActionButton btnDialogoInsertar = (FloatingActionButton) findViewById(R.id.btnInsertarProducto);
         btnDialogoInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mostrarDialogo();
             }
         });
-        textoBuscar.addTextChangedListener(new TextWatcher() {
+        _etBuscar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                listaItemsProductos = managerProducto.Buscar(textoBuscar.getText().toString());
+                listaItemsProductos = managerProducto.Buscar(_etBuscar.getText().toString());
                 // Crear un nuevo adaptador
                 adapter = new ListaProductoAdapter(listaItemsProductos, MainActivity.this);
                 recycler.setAdapter(adapter);
@@ -100,13 +105,20 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarDialogo() {
         final Dialog d=new Dialog(this);
         d.setContentView(R.layout.nuevo_producto);
+        _etDescripcion= (EditText) d.findViewById(R.id.etDescripcion);
+        _etCantidad= (EditText) d.findViewById(R.id.etCantidad);
+        _etPrecio= (EditText) d.findViewById(R.id.etPrecio);
+        _spTipo= (Spinner) d.findViewById(R.id.spTipo);
+
+        _btnInsertar= (Button) d.findViewById(R.id.btnInsertarProducto);
+        _btnCancelar= (Button) d.findViewById(R.id.btnCancelarProducto);
 
 
 
         //  textoDescripcion= (EditText) d.findViewById(R.id.tvNProdDescripcion);
 
 
-        botonGuardar.setOnClickListener(new View.OnClickListener() {
+        _btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //INSERTAR
@@ -114,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        botonCancelar.setOnClickListener(new View.OnClickListener() {
+        _btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
