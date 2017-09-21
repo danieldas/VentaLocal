@@ -103,7 +103,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
 
         viewHolder.setItemClickListener(new ItemClickListener() {
             @Override
-            public void onItemClick(View v, int pos) {
+            public void onItemClick(View v, final int pos) {
                 //OPEN DETAIL ACTIVITY
                 //PASS DATA
 
@@ -119,7 +119,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                 _btnDarDeBaja = (Button) d.findViewById(R.id.btnBajaProducto);
 
 
-                int posicion=0;
+                int posicion = 0;
                 final String itemCmb=items.get(pos).getTipoProducto();
                 if (itemCmb.equals("Celular"))
                 {
@@ -127,20 +127,31 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                 }
 
                 //textoIdProd.setText(items.get(pos).getIdProd());
+                _etDEscripcion.setText(items.get(pos).getDescripcion());
+                _etCantidad.setText(items.get(pos).getCantidad());
+                _etPrecio.setText(items.get(pos).getPrecio());
 
+                _spTipo.setSelection(posicion);
+
+                //instanciar de DBManager Producto
                 managerProducto= new DBManagerProducto(mainContext);
 
 
-                botonActualizar.setOnClickListener(new View.OnClickListener() {
+                _btnActualizar.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        //Actualizar
+                    public void onClick(View view) {
+                        managerProducto.actualizarProducto(items.get(pos).get_ID(),
+                                _etDEscripcion.getText().toString(),
+                                _etCantidad.getText().toString(),
+                                _etPrecio.getText().toString(),
+                                _spTipo.getSelectedItem().toString());
+
                         ((MainActivity) mainContext).recargarRecicler();
                         d.hide();
                     }
                 });
 
-                botonDarBaja.setOnClickListener(new View.OnClickListener() {
+                _btnDarDeBaja.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -149,7 +160,9 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                                 .setMessage("¿Estás segura en dar de baja a este producto?")
                                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //dar baja
+
+                                        managerProducto.darBajaProducto(items.get(pos).get_ID(), "Baja");
+
                                         ((MainActivity) mainContext).recargarRecicler();
                                         d.hide();
                                     }
