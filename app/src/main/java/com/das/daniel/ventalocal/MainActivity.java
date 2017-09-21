@@ -126,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
                         _etPrecio.getText()+"", "Alta", _spTipo.getSelectedItem()+""
 
                     );
+                _etDescripcion.setText("");
+                _etPrecio.setText("");
+                _etCantidad.setText("");
                 recargarRecicler();
             }
         });
